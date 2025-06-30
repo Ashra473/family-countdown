@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Hajah Romai Noor sampai ke Malaysia</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f4e9;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .bismillah {
+            font-size: 1.5em;
+            color: #2a6f39;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        h1 {
+            color: #8e6c3d;
+            margin: 15px 0;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .countdown-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .countdown-box {
+            background-color: #8e6c3d;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            min-width: 70px;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        
+        .countdown-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+            color: #555;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <h1>Countdown Hajah Romai Noor sampai ke Malaysia</h1>
+    
+    <div class="countdown-container">
+        <div class="countdown">
+            <div>
+                <div id="days" class="countdown-box">00</div>
+                <div class="countdown-label">Hari</div>
+            </div>
+            <div>
+                <div id="hours" class="countdown-box">00</div>
+                <div class="countdown-label">Jam</div>
+            </div>
+            <div>
+                <div id="minutes" class="countdown-box">00</div>
+                <div class="countdown-label">Minit</div>
+            </div>
+            <div>
+                <div id="seconds" class="countdown-box">00</div>
+                <div class="countdown-label">Saat</div>
+            </div>
+        </div>
+        <div class="footer">Waktu Malaysia (GMT+8) - 2 Julai 2025, 5:00 pagi</div>
+    </div>
+
+    <script>
+        // Updated target: 2 July 2025 5:00 AM Malaysia Time (GMT+8)
+        const targetDate = new Date('2025-07-02T05:00:00+08:00');
+        
+        function updateCountdown() {
+            const now = new Date();
+            const malaysiaTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (8 * 60 * 60000));
+            const diff = targetDate - malaysiaTime;
+            
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
